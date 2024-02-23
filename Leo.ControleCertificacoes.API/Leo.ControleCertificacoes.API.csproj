@@ -18,4 +18,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Leo.ControleCertificacoes.Core\Leo.ControleCertificacoes.Core.csproj" />
+  </ItemGroup>
+
 </Project>

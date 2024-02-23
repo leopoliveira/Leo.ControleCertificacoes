@@ -1,38 +1,61 @@
 ﻿using Leo.ControleCertificacoes.Core.Domain.Entities.Generic;
+using Leo.ControleCertificacoes.Core.Infra.AppDbContext;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces.Generic;
+
+using Microsoft.EntityFrameworkCore;
 
 namespace Leo.ControleCertificacoes.Core.Repository.Implementation.Generic
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityWithIdAndCode
     {
-        public Task<TEntity> GetByCode(int code)
+        private readonly AppDbContext _context;
+        private readonly DbSet<TEntity> _dbSet;
+
+        public RepositoryBase(AppDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+            _dbSet = context.Set<TEntity>();
         }
 
-        public Task<TEntity> GetById(Guid id)
+        public async Task<TEntity> GetByCodeAsync(int code)
         {
-            throw new NotImplementedException();
+            return await _dbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(entity => entity.Code == code);
         }
 
-        public Task<int> Insert(TEntity entity)
+        public async Task<TEntity> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _dbSet
+                .AsNoTracking()
+                .FirstOrDefaultAsync(entity => entity.Id == id);
         }
 
-        public Task Update(TEntity entity)
+        public async Task<int> CountAsyncAsync()
         {
-            throw new NotImplementedException();
+            return await _dbSet.CountAsync();
         }
 
-        public Task DeleteByCode(int code)
+        public async Task<int> InsertAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+
+            return await _context.SaveChangesAsync();
         }
 
-        public Task DeleteById(Guid id)
+        public async Task<int> UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            _context.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).Property(entity => entity.Code).IsModified = false;
+
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> DeleteAsync(TEntity entity)
+        {
+            _dbSet.Remove(entity);
+
+            return await _context.SaveChangesAsync();
         }
     }
 }

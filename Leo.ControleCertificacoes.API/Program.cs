@@ -1,3 +1,6 @@
+using Leo.ControleCertificacoes.Core.Application.DependencyInjection;
+using Leo.ControleCertificacoes.Core.Repository.Implementation;
+using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 
 namespace Leo.ControleCertificacoes.API
 {
@@ -14,6 +17,12 @@ namespace Leo.ControleCertificacoes.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // DbContext Injection
+            builder.Services.AddDbContextService();
+
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<ICertifiedRepository, CertifiedRepository>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,7 +35,6 @@ namespace Leo.ControleCertificacoes.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

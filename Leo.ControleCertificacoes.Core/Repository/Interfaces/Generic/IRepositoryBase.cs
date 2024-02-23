@@ -4,16 +4,16 @@ namespace Leo.ControleCertificacoes.Core.Repository.Interfaces.Generic
 {
     public interface IRepositoryBase<TEntity> where TEntity : EntityWithIdAndCode
     {
-        Task<TEntity> GetById(Guid id);
+        Task<TEntity> GetByIdAsync(Guid id);
 
-        Task<TEntity> GetByCode(int code);
+        Task<TEntity> GetByCodeAsync(int code);
 
-        Task<int> Insert(TEntity entity);
+        Task<int> CountAsyncAsync();
 
-        Task Update(TEntity entity);
+        Task<int> InsertAsync(TEntity entity);
 
-        Task DeleteById(Guid id);
+        Task<int> UpdateAsync(TEntity entity);
 
-        Task DeleteByCode(int code);
+        Task<int> DeleteAsync(TEntity entity);
     }
 }
