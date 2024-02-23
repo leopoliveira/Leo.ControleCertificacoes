@@ -9,5 +9,7 @@ namespace Leo.ControleCertificacoes.Core.Domain.Entities
         public string? Department { get; set; }
 
         public int NumberOfCertifieds { get; set; }
+
+        public ICollection<Certified> Certifieds { get; } = new List<Certified>();
     }
 }
