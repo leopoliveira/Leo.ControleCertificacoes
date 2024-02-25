@@ -47,6 +47,18 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             };
         }
 
+        public static Certified ToCertified(this CertifiedReadDto certified)
+        {
+            return new Certified
+            {
+                Id = certified.Id,
+                Code = certified.Code,
+                Name = certified.Name,
+                Expiration = certified.Expiration,
+                Description = certified.Description
+            };
+        }
+
         #endregion
     }
 }
