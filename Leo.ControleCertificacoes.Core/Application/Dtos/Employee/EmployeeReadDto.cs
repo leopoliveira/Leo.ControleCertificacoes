@@ -1,6 +1,8 @@
-﻿namespace Leo.ControleCertificacoes.Core.Application.Dtos.Employee
+﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Base;
+
+namespace Leo.ControleCertificacoes.Core.Application.Dtos.Employee
 {
-    public record EmployeeReadDto
+    public record EmployeeReadDto : BaseDtoWithIdAndCorde
     {
         public string Name { get; set; } = null!;
 

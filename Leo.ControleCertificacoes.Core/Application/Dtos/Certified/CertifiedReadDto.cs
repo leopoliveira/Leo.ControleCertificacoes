@@ -1,6 +1,8 @@
-﻿namespace Leo.ControleCertificacoes.Core.Application.Dtos.Certified
+﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Base;
+
+namespace Leo.ControleCertificacoes.Core.Application.Dtos.Certified
 {
-    public record CertifiedReadDto
+    public record CertifiedReadDto : BaseDtoWithIdAndCorde
     {
         public string Name { get; set; } = null!;
 
@@ -8,6 +10,6 @@
 
         public string? Description { get; set; }
 
-        public string EmployeeName { get; set; }
+        public string EmployeeName { get; set; } = null!;
     }
 }
