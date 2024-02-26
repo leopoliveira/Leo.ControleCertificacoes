@@ -13,7 +13,7 @@ namespace Leo.ControleCertificacoes.Core.Application.DependencyInjection
     {
         public static void AddDbContextService(this IServiceCollection service)
         {
-            const string connectionString = @"Database\Certificados.db";
+            const string connectionString = @"..\Leo.ControleCertificacoes.Core\Database\Certificados.db";
             service.AddDbContext<AppDbContext>(options => options.UseSqlite(string.Format("Data Source={0}", connectionString)));
         }
 
