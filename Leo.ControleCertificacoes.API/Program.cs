@@ -1,6 +1,4 @@
 using Leo.ControleCertificacoes.Core.Application.DependencyInjection;
-using Leo.ControleCertificacoes.Core.Repository.Implementation;
-using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 
 namespace Leo.ControleCertificacoes.API
 {
