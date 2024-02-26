@@ -22,7 +22,10 @@ namespace Leo.ControleCertificacoes.Core.Infra.AppDbContext
 
             modelBuilder.ApplyConfiguration(new CertifiedConfiguration());
 
-            DataSeed(modelBuilder);
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                DataSeed(modelBuilder);
+            }
 
             base.OnModelCreating(modelBuilder);
         }
