@@ -45,25 +45,35 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await _repository.CountAsyncAsync();
         }
 
-        public async Task<int> InsertAsync(EmployeeCreateDto dto)
+        public async Task<EmployeeDto> InsertAsync(EmployeeCreateDto dto)
         {
             Employee employee = dto.ToEmployee();
 
-            return await _repository.InsertAsync(employee);
+            if (await _repository.InsertAsync(employee) == 0)
+            {
+                return null;
+            }
+
+            return await GetByIdAsync(employee.Id);
         }
 
-        public async Task<int> UpdateAsync(EmployeeDto dto)
+        public async Task<EmployeeDto> UpdateAsync(EmployeeDto dto)
         {
             Employee employee = await _repository.GetByIdAsync(dto.Id);
 
             if (employee is null)
             {
-                return 0;
+                return null;
             }
 
             employee = dto.ToEmployee();
 
-            return await _repository.UpdateAsync(employee);
+            if (await _repository.UpdateAsync(employee) == 0)
+            {
+                return null;
+            }
+
+            return await GetByIdAsync(employee.Id);
         }
 
         public async Task<int> DeleteAsync(EmployeeDto dto)
