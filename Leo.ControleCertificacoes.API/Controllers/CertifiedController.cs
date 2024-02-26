@@ -15,7 +15,7 @@ namespace Leo.ControleCertificacoes.API.Controllers
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("{id:Guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CertifiedDto>> GetById(Guid id)
@@ -30,7 +30,7 @@ namespace Leo.ControleCertificacoes.API.Controllers
             return Ok(dto);
         }
 
-        [HttpGet]
+        [HttpGet("{code}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CertifiedDto>> GetByCode(int code)
