@@ -20,8 +20,9 @@ namespace Leo.ControleCertificacoes.API
             // DbContext Injection
             builder.Services.AddDbContextService();
 
-            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            builder.Services.AddScoped<ICertifiedRepository, CertifiedRepository>();
+            builder.Services.AddRepositoryServices();
+
+            builder.Services.AddAppServices();
 
             var app = builder.Build();
 
