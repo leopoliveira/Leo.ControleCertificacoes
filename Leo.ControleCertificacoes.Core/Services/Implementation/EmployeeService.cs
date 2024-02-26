@@ -16,7 +16,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             _repository = repository;
         }
 
-        public async Task<EmployeeReadDto> GetByIdAsync(Guid id)
+        public async Task<EmployeeDto> GetByIdAsync(Guid id)
         {
             Employee employee = await _repository.GetByIdAsync(id);
 
@@ -28,7 +28,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return employee.ToEmployeeReadDto();
         }
 
-        public async Task<EmployeeReadDto> GetByCodeAsync(int code)
+        public async Task<EmployeeDto> GetByCodeAsync(int code)
         {
             Employee employee = await _repository.GetByCodeAsync(code);
 
@@ -52,7 +52,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await _repository.InsertAsync(employee);
         }
 
-        public async Task<int> UpdateAsync(EmployeeReadDto dto)
+        public async Task<int> UpdateAsync(EmployeeDto dto)
         {
             Employee employee = await _repository.GetByIdAsync(dto.Id);
 
@@ -66,7 +66,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await _repository.UpdateAsync(employee);
         }
 
-        public async Task<int> DeleteAsync(EmployeeReadDto dto)
+        public async Task<int> DeleteAsync(EmployeeDto dto)
         {
             Employee employee = await _repository.GetByIdAsync(dto.Id);
 

@@ -33,9 +33,9 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
 
         #region "EmployeeReadDto"
 
-        public static EmployeeReadDto ToEmployeeReadDto(this Employee employee)
+        public static EmployeeDto ToEmployeeReadDto(this Employee employee)
         {
-            return new EmployeeReadDto
+            return new EmployeeDto
             {
                 Name = employee.Name,
                 Department = employee.Department,
@@ -43,7 +43,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             };
         }
 
-        public static Employee ToEmployee(this EmployeeReadDto employee)
+        public static Employee ToEmployee(this EmployeeDto employee)
         {
             return new Employee
             {

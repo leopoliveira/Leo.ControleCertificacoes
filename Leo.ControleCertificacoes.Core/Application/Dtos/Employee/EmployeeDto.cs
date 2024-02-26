@@ -2,7 +2,7 @@
 
 namespace Leo.ControleCertificacoes.Core.Application.Dtos.Employee
 {
-    public record EmployeeReadDto : BaseDtoWithIdAndCorde
+    public record EmployeeDto : BaseDtoWithIdAndCorde
     {
         public string Name { get; set; } = null!;
 

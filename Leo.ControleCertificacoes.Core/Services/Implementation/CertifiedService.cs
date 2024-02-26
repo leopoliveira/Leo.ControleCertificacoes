@@ -15,7 +15,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             _repository = repository;
         }
 
-        public async Task<CertifiedReadDto> GetByIdAsync(Guid id)
+        public async Task<CertifiedDto> GetByIdAsync(Guid id)
         {
             Certified certified = await _repository.GetByIdAsync(id);
 
@@ -27,7 +27,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return certified.ToCertifiedReadDto();
         }
 
-        public async Task<CertifiedReadDto> GetByCodeAsync(int code)
+        public async Task<CertifiedDto> GetByCodeAsync(int code)
         {
             Certified certified = await _repository.GetByCodeAsync(code);
 
@@ -51,7 +51,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await _repository.InsertAsync(certified);
         }
 
-        public async Task<int> UpdateAsync(CertifiedReadDto dto)
+        public async Task<int> UpdateAsync(CertifiedDto dto)
         {
             Certified certified = await _repository.GetByIdAsync(dto.Id);
 
@@ -65,7 +65,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await _repository.UpdateAsync(certified);
         }
 
-        public async Task<int> DeleteAsync(CertifiedReadDto dto)
+        public async Task<int> DeleteAsync(CertifiedDto dto)
         {
             Certified certified = await _repository.GetByIdAsync(dto.Id);
 
