@@ -5,7 +5,7 @@ using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 
 namespace Leo.ControleCertificacoes.Core.Repository.Implementation
 {
-    public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
+    internal class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
     {
         public EmployeeRepository(AppDbContext context) : base(context)
         {

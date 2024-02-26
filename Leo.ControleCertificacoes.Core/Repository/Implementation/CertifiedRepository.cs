@@ -5,7 +5,7 @@ using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 
 namespace Leo.ControleCertificacoes.Core.Repository.Implementation
 {
-    public class CertifiedRepository : RepositoryBase<Certified>, ICertifiedRepository
+    internal class CertifiedRepository : RepositoryBase<Certified>, ICertifiedRepository
     {
         public CertifiedRepository(AppDbContext context) : base(context)
         {
