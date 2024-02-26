@@ -1,4 +1,9 @@
+using System.Reflection;
+
+using Leo.ControleCertificacoes.API.Constants;
 using Leo.ControleCertificacoes.Core.Application.DependencyInjection;
+
+using Microsoft.OpenApi.Models;
 
 namespace Leo.ControleCertificacoes.API
 {
@@ -13,7 +18,26 @@ namespace Leo.ControleCertificacoes.API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            builder.Services.Configure<RouteOptions>(opt => opt.LowercaseUrls = true);
+
+            builder.Services.AddSwaggerGen(opt =>
+            {
+                opt.SwaggerDoc(ApiConstants.API_V1, new OpenApiInfo
+                {
+                    Version = ApiConstants.API_V1,
+                    Title = ApiConstants.TITLE,
+                    Description = ApiConstants.DESCRIPTION,
+                    Contact = new OpenApiContact
+                    {
+                        Name = ApiConstants.AUTHOR,
+                        Url = new Uri(ApiConstants.GITHUB_URL)
+                    }
+                });
+
+                string xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
+            });
 
             // DbContext Injection
             builder.Services.AddDbContextService();
