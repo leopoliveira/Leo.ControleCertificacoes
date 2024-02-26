@@ -41,6 +41,8 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
         {
             return new CertifiedDto
             {
+                Id = certified.Id,
+                Code = certified.Code,
                 Name = certified.Name,
                 Expiration = certified.Expiration,
                 Description = certified.Description

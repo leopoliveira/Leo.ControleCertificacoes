@@ -37,6 +37,8 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
         {
             return new EmployeeDto
             {
+                Id = employee.Id,
+                Code = employee.Code,
                 Name = employee.Name,
                 Department = employee.Department,
                 NumberOfCertifieds = employee.NumberOfCertifieds
