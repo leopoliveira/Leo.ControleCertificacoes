@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Leo.ControleCertificacoes.Core.Repository.Implementation.Generic
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityWithIdAndCode
+    internal class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityWithIdAndCode
     {
         private readonly AppDbContext _context;
         private readonly DbSet<TEntity> _dbSet;
