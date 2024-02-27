@@ -12,7 +12,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Dtos.Certified
         [Required(ErrorMessage = "O {0} é obrigatório.")]
         [DataType(DataType.Date, ErrorMessage = "Informe um formato válido para Data.")]
         [Display(Name = "Data de expiração")]
-        public DateOnly Expiration { get; set; }
+        public DateTime Expiration { get; set; }
 
         [StringLength(256, ErrorMessage = "O {0} deve ter um tamanho máximo de {1}.")]
         [Display(Name = "Descrição")]

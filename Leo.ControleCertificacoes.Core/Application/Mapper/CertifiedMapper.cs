@@ -12,7 +12,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             return new Certified
             {
                 Name = certified.Name,
-                Expiration = certified.Expiration,
+                Expiration = DateTimeToDateOnly(certified.Expiration),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -27,7 +27,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             return new CertifiedCreateDto
             {
                 Name = certified.Name,
-                Expiration = certified.Expiration,
+                Expiration = DateOnlyToDateTime(certified.Expiration),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -59,6 +59,20 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
                 Expiration = certified.Expiration,
                 Description = certified.Description
             };
+        }
+
+        #endregion
+
+        #region "Private Methods"
+
+        private static DateOnly DateTimeToDateOnly(DateTime dateTime)
+        {
+            return DateOnly.FromDateTime(dateTime);
+        }
+
+        private static DateTime DateOnlyToDateTime(DateOnly dateOnly)
+        {
+            return dateOnly.ToDateTime(TimeOnly.MinValue);
         }
 
         #endregion
