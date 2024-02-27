@@ -9,10 +9,12 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
     public class CertifiedService : ICertifiedService
     {
         private readonly ICertifiedRepository _repository;
+        private readonly IEmployeeRepository _employeeRepository;
 
-        public CertifiedService(ICertifiedRepository repository)
+        public CertifiedService(ICertifiedRepository repository, IEmployeeRepository employeeRepository)
         {
             _repository = repository;
+            _employeeRepository = employeeRepository;
         }
 
         public async Task<CertifiedDto> GetByIdAsync(Guid id)
@@ -52,6 +54,18 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             {
                 return null;
             }
+
+            Employee employee = await _employeeRepository.GetByIdAsync(dto.EmployeeId);
+
+            if (employee is null)
+            {
+                await _repository.DeleteAsync(certified);
+                return null;
+            }
+
+            employee.NumberOfCertifieds++;
+
+            _ = await _employeeRepository.UpdateAsync(employee);
 
             return await GetByIdAsync(certified.Id);
         }
