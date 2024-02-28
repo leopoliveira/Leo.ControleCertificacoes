@@ -37,7 +37,7 @@ namespace Leo.ControleCertificacoes.Core.Infra.AppDbContext
                 Id = new Guid("E1E7E405-4690-42E8-8423-DD9ECD389BC7"),
                 Code = 1,
                 Name = "Employee 1",
-                Department = "Manutenção",
+                Department = "HR",
                 NumberOfCertifieds = 1
             });
 
@@ -49,7 +49,7 @@ namespace Leo.ControleCertificacoes.Core.Infra.AppDbContext
                 Code = 1,
                 Name = "Certified 1",
                 Expiration = new DateOnly(today.Year, today.Month, today.Day),
-                Description = "Descrição 1",
+                Description = "Certified 1 Description",
                 EmployeeId = new Guid("E1E7E405-4690-42E8-8423-DD9ECD389BC7")
             });
         }
