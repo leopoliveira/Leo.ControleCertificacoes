@@ -1,5 +1,6 @@
 ﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Certified;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
+using Leo.ControleCertificacoes.Core.Helpers;
 
 namespace Leo.ControleCertificacoes.Core.Application.Mapper
 {
@@ -12,7 +13,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             return new Certified
             {
                 Name = certified.Name,
-                Expiration = DateTimeToDateOnly(certified.Expiration),
+                Expiration = certified.Expiration.FromDateTimeToDateOnly(),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -27,7 +28,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             return new CertifiedCreateDto
             {
                 Name = certified.Name,
-                Expiration = DateOnlyToDateTime(certified.Expiration),
+                Expiration = certified.Expiration.FromDateOnlyToDateTime(),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -44,7 +45,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
                 Id = certified.Id,
                 Code = certified.Code,
                 Name = certified.Name,
-                Expiration = DateOnlyToDateTime(certified.Expiration),
+                Expiration = certified.Expiration.FromDateOnlyToDateTime(),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -57,23 +58,9 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
                 Id = certified.Id,
                 Code = certified.Code,
                 Name = certified.Name,
-                Expiration = DateTimeToDateOnly(certified.Expiration),
+                Expiration = certified.Expiration.FromDateTimeToDateOnly(),
                 Description = certified.Description
             };
-        }
-
-        #endregion
-
-        #region "Private Methods"
-
-        private static DateOnly DateTimeToDateOnly(DateTime dateTime)
-        {
-            return DateOnly.FromDateTime(dateTime);
-        }
-
-        private static DateTime DateOnlyToDateTime(DateOnly dateOnly)
-        {
-            return dateOnly.ToDateTime(TimeOnly.MinValue);
         }
 
         #endregion
