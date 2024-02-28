@@ -10,6 +10,6 @@ namespace Leo.ControleCertificacoes.Core.Application.Dtos.Certified
 
         public string? Description { get; set; }
 
-        public string EmployeeName { get; set; } = null!;
+        public Guid EmployeeId { get; set; }
     }
 }
