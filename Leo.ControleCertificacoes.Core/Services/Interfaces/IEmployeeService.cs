@@ -1,4 +1,5 @@
 ﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Employee;
+using Leo.ControleCertificacoes.Core.Enums;
 
 namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 {
@@ -13,6 +14,8 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
         Task<EmployeeDto> InsertAsync(EmployeeCreateDto dto);
 
         Task<EmployeeDto> UpdateAsync(EmployeePatchDto dto);
+
+        Task UpdateNumberOfCertifiedsAsync(Guid employeeId, EnumDataBaseOperation operation);
 
         Task<int> DeleteAsync(EmployeeDto dto);
     }

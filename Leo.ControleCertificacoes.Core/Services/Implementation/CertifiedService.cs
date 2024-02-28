@@ -1,6 +1,7 @@
 ﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Certified;
 using Leo.ControleCertificacoes.Core.Application.Mapper;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
+using Leo.ControleCertificacoes.Core.Enums;
 using Leo.ControleCertificacoes.Core.Helpers;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 using Leo.ControleCertificacoes.Core.Services.Interfaces;
@@ -10,12 +11,12 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
     public class CertifiedService : ICertifiedService
     {
         private readonly ICertifiedRepository _repository;
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeService _employeeService;
 
-        public CertifiedService(ICertifiedRepository repository, IEmployeeRepository employeeRepository)
+        public CertifiedService(ICertifiedRepository repository, IEmployeeService employeeService)
         {
             _repository = repository;
-            _employeeRepository = employeeRepository;
+            _employeeService = employeeService;
         }
 
         public async Task<CertifiedDto> GetByIdAsync(Guid id)
@@ -56,17 +57,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            Employee employee = await _employeeRepository.GetByIdAsync(dto.EmployeeId);
-
-            if (employee is null)
-            {
-                await _repository.DeleteAsync(certified);
-                return null;
-            }
-
-            employee.NumberOfCertifieds++;
-
-            _ = await _employeeRepository.UpdateAsync(employee);
+            await _employeeService.UpdateNumberOfCertifiedsAsync(dto.EmployeeId, EnumDataBaseOperation.INSERT);
 
             return await GetByIdAsync(certified.Id);
         }
@@ -98,6 +89,8 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             {
                 return 0;
             }
+
+            await _employeeService.UpdateNumberOfCertifiedsAsync(dto.EmployeeId, EnumDataBaseOperation.DELETE);
 
             return await _repository.DeleteAsync(certified);
         }

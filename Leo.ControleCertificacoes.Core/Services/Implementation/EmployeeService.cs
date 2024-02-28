@@ -1,6 +1,7 @@
 ﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Employee;
 using Leo.ControleCertificacoes.Core.Application.Mapper;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
+using Leo.ControleCertificacoes.Core.Enums;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 using Leo.ControleCertificacoes.Core.Services.Interfaces;
 
@@ -73,6 +74,24 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             }
 
             return await GetByIdAsync(employee.Id);
+        }
+
+        public async Task UpdateNumberOfCertifiedsAsync(Guid employeeId, EnumDataBaseOperation operation)
+        {
+            Employee employee = await _repository.GetByIdAsync(employeeId) ?? throw new InvalidOperationException("There is no employee with this given id.");
+
+            if (operation == EnumDataBaseOperation.INSERT)
+            {
+                employee.NumberOfCertifieds++;
+            }
+            else if (operation == EnumDataBaseOperation.DELETE)
+            {
+                employee.NumberOfCertifieds = employee.NumberOfCertifieds <= 0
+                    ? 0
+                    : employee.NumberOfCertifieds - 1;
+            }
+
+            _ = await _repository.UpdateAsync(employee);
         }
 
         public async Task<int> DeleteAsync(EmployeeDto dto)
