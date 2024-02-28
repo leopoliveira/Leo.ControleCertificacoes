@@ -12,7 +12,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 
         Task<EmployeeDto> InsertAsync(EmployeeCreateDto dto);
 
-        Task<EmployeeDto> UpdateAsync(EmployeeDto dto);
+        Task<EmployeeDto> UpdateAsync(EmployeePatchDto dto);
 
         Task<int> DeleteAsync(EmployeeDto dto);
     }

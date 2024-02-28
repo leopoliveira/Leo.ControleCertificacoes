@@ -19,6 +19,24 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             };
         }
 
+        public static void PatchCertified(this Certified certified, CertifiedPatchDto dto)
+        {
+            if (!string.IsNullOrWhiteSpace(dto.Name))
+            {
+                certified.Name = dto.Name;
+            }
+
+            if (dto.Expiration.HasValue && dto.Expiration.Value != DateTime.MinValue)
+            {
+                certified.Expiration = dto.Expiration.Value.FromDateTimeToDateOnly();
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto.Description))
+            {
+                certified.Description = dto.Description;
+            }
+        }
+
         #endregion
 
         #region "CertifiedCreateDto"

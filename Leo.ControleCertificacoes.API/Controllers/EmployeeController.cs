@@ -65,16 +65,11 @@ namespace Leo.ControleCertificacoes.API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
 
-        [HttpPut]
+        [HttpPatch]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<EmployeeDto>> Update(EmployeeDto dto)
+        public async Task<ActionResult<EmployeeDto>> Update(EmployeePatchDto dto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(dto);
-            }
-
             var result = await _service.UpdateAsync(dto);
 
             if (result is null)

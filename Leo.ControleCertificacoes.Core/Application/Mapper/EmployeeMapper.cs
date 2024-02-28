@@ -16,6 +16,19 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
             };
         }
 
+        public static void PatchEmployee(this Employee employee, EmployeePatchDto dto)
+        {
+            if (!string.IsNullOrWhiteSpace(dto.Name))
+            {
+                employee.Name = dto.Name;
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto.Department))
+            {
+                employee.Department = dto.Department;
+            }
+        }
+
         #endregion
 
         #region "EmployeeCreateDto"

@@ -1,6 +1,7 @@
 ﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Certified;
 using Leo.ControleCertificacoes.Core.Application.Mapper;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
+using Leo.ControleCertificacoes.Core.Helpers;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 using Leo.ControleCertificacoes.Core.Services.Interfaces;
 
@@ -70,7 +71,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await GetByIdAsync(certified.Id);
         }
 
-        public async Task<CertifiedDto> UpdateAsync(CertifiedDto dto)
+        public async Task<CertifiedDto> UpdateAsync(CertifiedPatchDto dto)
         {
             Certified certified = await _repository.GetByIdAsync(dto.Id);
 
@@ -79,7 +80,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            certified = dto.ToCertified();
+            certified.PatchCertified(dto);
 
             if (await _repository.UpdateAsync(certified) == 0)
             {

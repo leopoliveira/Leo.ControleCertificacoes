@@ -1,4 +1,6 @@
-﻿using Leo.ControleCertificacoes.Core.Domain.Entities.Generic;
+﻿using System.Runtime.Serialization;
+
+using Leo.ControleCertificacoes.Core.Domain.Entities.Generic;
 using Leo.ControleCertificacoes.Core.Infra.AppDbContext;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces.Generic;
 
@@ -50,8 +52,7 @@ namespace Leo.ControleCertificacoes.Core.Repository.Implementation.Generic
 
         public virtual async Task<int> UpdateAsync(TEntity entity)
         {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.Entry(entity).Property(entity => entity.Code).IsModified = false;
+            _dbSet.Update(entity);
 
             return await _context.SaveChangesAsync();
         }

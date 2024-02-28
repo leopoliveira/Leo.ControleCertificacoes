@@ -56,7 +56,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await GetByIdAsync(employee.Id);
         }
 
-        public async Task<EmployeeDto> UpdateAsync(EmployeeDto dto)
+        public async Task<EmployeeDto> UpdateAsync(EmployeePatchDto dto)
         {
             Employee employee = await _repository.GetByIdAsync(dto.Id);
 
@@ -65,7 +65,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            employee = dto.ToEmployee();
+            employee.PatchEmployee(dto);
 
             if (await _repository.UpdateAsync(employee) == 0)
             {
