@@ -1,5 +1,4 @@
-﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Certified;
-using Leo.ControleCertificacoes.Core.Application.Dtos.Employee;
+﻿using Leo.ControleCertificacoes.Core.Application.Dtos.Employee;
 using Leo.ControleCertificacoes.Core.Application.Mapper;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces;
@@ -25,7 +24,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            return employee.ToEmployeeReadDto();
+            return employee.ToEmployeeDto();
         }
 
         public async Task<EmployeeDto> GetByCodeAsync(int code)
@@ -37,7 +36,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            return employee.ToEmployeeReadDto();
+            return employee.ToEmployeeDto();
         }
 
         public async Task<int> CountAsyncAsync()

@@ -26,7 +26,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            return certified.ToCertifiedReadDto();
+            return certified.ToCertifiedDto();
         }
 
         public async Task<CertifiedDto> GetByCodeAsync(int code)
@@ -38,7 +38,7 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
                 return null;
             }
 
-            return certified.ToCertifiedReadDto();
+            return certified.ToCertifiedDto();
         }
 
         public async Task<int> CountAsyncAsync()
