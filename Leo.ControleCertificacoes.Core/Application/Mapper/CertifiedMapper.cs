@@ -44,7 +44,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
                 Id = certified.Id,
                 Code = certified.Code,
                 Name = certified.Name,
-                Expiration = certified.Expiration,
+                Expiration = DateOnlyToDateTime(certified.Expiration),
                 Description = certified.Description,
                 EmployeeId = certified.EmployeeId
             };
@@ -57,7 +57,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
                 Id = certified.Id,
                 Code = certified.Code,
                 Name = certified.Name,
-                Expiration = certified.Expiration,
+                Expiration = DateTimeToDateOnly(certified.Expiration),
                 Description = certified.Description
             };
         }
