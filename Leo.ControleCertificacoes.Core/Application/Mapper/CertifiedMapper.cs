@@ -37,7 +37,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
 
         #region "CertifiedReadDto"
 
-        public static CertifiedDto ToCertifiedReadDto(this Certified certified)
+        public static CertifiedDto ToCertifiedDto(this Certified certified)
         {
             return new CertifiedDto
             {

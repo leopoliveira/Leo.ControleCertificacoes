@@ -33,7 +33,7 @@ namespace Leo.ControleCertificacoes.Core.Application.Mapper
 
         #region "EmployeeReadDto"
 
-        public static EmployeeDto ToEmployeeReadDto(this Employee employee)
+        public static EmployeeDto ToEmployeeDto(this Employee employee)
         {
             return new EmployeeDto
             {
