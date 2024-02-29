@@ -25,7 +25,11 @@ export default {
 </script>
 
 <template>
-  <div class="card"><Menubar :model="items" /></div>
+  <div class="card">
+    <Menubar
+      :model="items"
+      :breakpoint="'400px'" />
+  </div>
 </template>
 
 <style scoped>
