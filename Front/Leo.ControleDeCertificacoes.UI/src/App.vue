@@ -1,15 +1,18 @@
-<script lang="ts">
-import Navbar from "./components/Navbar.vue";
-
-export default {
-  components: {
-    Navbar,
-  },
-};
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <Navbar />
+  <header>
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <style scoped></style>
