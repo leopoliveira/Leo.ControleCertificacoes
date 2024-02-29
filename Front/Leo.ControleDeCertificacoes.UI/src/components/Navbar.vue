@@ -25,11 +25,15 @@ export default {
 </script>
 
 <template>
-  <div>
-    <Menubar
-      :model="items"
-      :breakpoint="'400px'" />
-  </div>
+  <header>
+    <nav>
+      <div>
+        <Menubar
+          :model="items"
+          :breakpoint="'400px'" />
+      </div>
+    </nav>
+  </header>
 </template>
 
 <style scoped></style>
