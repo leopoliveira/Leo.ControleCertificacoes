@@ -1,7 +1,15 @@
 <script lang="ts">
-export default {};
+import Navbar from "./components/Navbar.vue";
+
+export default {
+  components: {
+    Navbar,
+  },
+};
 </script>
 
-<template></template>
+<template>
+  <Navbar />
+</template>
 
 <style scoped></style>
