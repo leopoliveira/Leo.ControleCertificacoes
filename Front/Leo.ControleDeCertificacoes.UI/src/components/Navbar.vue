@@ -25,18 +25,11 @@ export default {
 </script>
 
 <template>
-  <div class="card">
+  <div>
     <Menubar
       :model="items"
       :breakpoint="'400px'" />
   </div>
 </template>
 
-<style scoped>
-.card {
-  background: var(--surface-card);
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-</style>
+<style scoped></style>
