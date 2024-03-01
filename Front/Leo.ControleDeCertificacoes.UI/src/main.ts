@@ -4,11 +4,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import PrimeVue from "primevue/config";
-import 'primevue/resources/themes/aura-light-green/theme.css'
+import Lara from "./presets/lara";
 
 const app = createApp(App);
 
-app.use(PrimeVue, { ripple: true });
+app.use(PrimeVue, { unstyled: true, pt: Lara });
 app.use(router);
 
 app.mount("#app");
