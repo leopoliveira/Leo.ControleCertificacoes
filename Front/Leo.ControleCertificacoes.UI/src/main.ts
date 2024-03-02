@@ -9,6 +9,6 @@ import Lara from "./presets/lara";
 const app = createApp(App);
 
 app.use(PrimeVue, { unstyled: true, pt: Lara });
-app.use(router);
+app.use(router)
 
 app.mount("#app");
