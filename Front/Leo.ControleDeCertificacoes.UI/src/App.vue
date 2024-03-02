@@ -10,10 +10,11 @@ export default {
 
 <template>
    <header>
-      <div class="wrapper">
-         <nav>
+      <div class="p-3 text-xl font-bold">
+         <nav class="flex gap-5">
             <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/about">About</RouterLink>
+            <RouterLink to="/funcionario">Funcionários</RouterLink>
+            <RouterLink to="/certificado">Certificados</RouterLink>
          </nav>
       </div>
    </header>
