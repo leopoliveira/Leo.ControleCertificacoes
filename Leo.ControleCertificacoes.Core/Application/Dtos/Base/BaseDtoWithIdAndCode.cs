@@ -1,6 +1,6 @@
 ﻿namespace Leo.ControleCertificacoes.Core.Application.Dtos.Base
 {
-    public record BaseDtoWithIdAndCorde
+    public record BaseDtoWithIdAndCode
     {
         public Guid Id { get; set; }
 

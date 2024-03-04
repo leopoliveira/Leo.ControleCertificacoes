@@ -2,7 +2,7 @@
 
 namespace Leo.ControleCertificacoes.Core.Application.Dtos.Certified
 {
-    public record CertifiedDto : BaseDtoWithIdAndCorde
+    public record CertifiedDto : BaseDtoWithIdAndCode
     {
         public string Name { get; set; } = null!;
 
