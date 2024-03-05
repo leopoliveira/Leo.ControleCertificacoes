@@ -13,11 +13,24 @@ namespace Leo.ControleCertificacoes.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            string CorsPolicyName = "CorsPolicy";
+
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddCors(options =>
+            {
+            options.AddPolicy(name: CorsPolicyName,
+                policy =>
+                {
+                    policy.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+            });
 
             builder.Services.Configure<RouteOptions>(opt => opt.LowercaseUrls = true);
 
@@ -56,6 +69,8 @@ namespace Leo.ControleCertificacoes.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(CorsPolicyName);
 
             app.UseAuthorization();
 
