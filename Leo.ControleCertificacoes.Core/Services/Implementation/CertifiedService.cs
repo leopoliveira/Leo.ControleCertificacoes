@@ -2,7 +2,6 @@
 using Leo.ControleCertificacoes.Core.Application.Mapper;
 using Leo.ControleCertificacoes.Core.Domain.Entities;
 using Leo.ControleCertificacoes.Core.Enums;
-using Leo.ControleCertificacoes.Core.Helpers;
 using Leo.ControleCertificacoes.Core.Repository.Interfaces;
 using Leo.ControleCertificacoes.Core.Services.Interfaces;
 
@@ -17,6 +16,18 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
         {
             _repository = repository;
             _employeeService = employeeService;
+        }
+
+        public async Task<IEnumerable<CertifiedDto>> GetAll()
+        {
+            var certifieds = await _repository.GetAll();
+
+            if (certifieds.Any())
+            {
+                return certifieds.Select(x => x.ToCertifiedDto());
+            }
+
+            return null;
         }
 
         public async Task<CertifiedDto> GetByIdAsync(Guid id)

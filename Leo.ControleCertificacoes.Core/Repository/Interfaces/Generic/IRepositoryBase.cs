@@ -4,6 +4,8 @@ namespace Leo.ControleCertificacoes.Core.Repository.Interfaces.Generic
 {
     public interface IRepositoryBase<TEntity> where TEntity : EntityWithIdAndCode
     {
+        Task<IEnumerable<TEntity>> GetAll();
+
         Task<TEntity> GetByIdAsync(Guid id);
 
         Task<TEntity> GetByCodeAsync(int code);

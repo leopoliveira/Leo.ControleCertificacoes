@@ -15,6 +15,21 @@ namespace Leo.ControleCertificacoes.API.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<EmployeeDto>>> Get()
+        {
+            var dtoList = await _service.GetAll();
+
+            if (dtoList is null)
+            {
+                return NotFound("Anything was found.");
+            }
+
+            return Ok(dtoList);
+        }
+
         [HttpGet("{id:Guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -4,6 +4,8 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 {
     public interface ICertifiedService
     {
+        Task<IEnumerable<CertifiedDto>> GetAll();
+
         Task<CertifiedDto> GetByIdAsync(Guid id);
 
         Task<CertifiedDto> GetByCodeAsync(int code);

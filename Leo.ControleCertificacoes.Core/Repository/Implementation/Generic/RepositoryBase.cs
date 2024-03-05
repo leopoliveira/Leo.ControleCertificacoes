@@ -22,6 +22,13 @@ namespace Leo.ControleCertificacoes.Core.Repository.Implementation.Generic
             _dbSet = context.Set<TEntity>();
         }
 
+        public virtual async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await _dbSet
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public virtual async Task<TEntity> GetByCodeAsync(int code)
         {
             return await _dbSet

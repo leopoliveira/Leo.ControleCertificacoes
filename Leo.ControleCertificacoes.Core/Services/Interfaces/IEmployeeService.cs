@@ -5,6 +5,8 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 {
     public interface IEmployeeService
     {
+        Task<IEnumerable<EmployeeDto>> GetAll();
+
         Task<EmployeeDto> GetByIdAsync(Guid id);
 
         Task<EmployeeDto> GetByCodeAsync(int code);

@@ -16,6 +16,18 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             _repository = repository;
         }
 
+        public async Task<IEnumerable<EmployeeDto>> GetAll()
+        {
+            var employees = await _repository.GetAll();
+
+            if (employees.Any())
+            {
+                return employees.Select(x => x.ToEmployeeDto());
+            }
+
+            return null;
+        }
+
         public async Task<EmployeeDto> GetByIdAsync(Guid id)
         {
             Employee employee = await _repository.GetByIdAsync(id);
