@@ -5,6 +5,7 @@ import { GetAllEmployees } from "../../services/Employee/EmployeeService";
 
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
+import Button from "primevue/button";
 
 export default {
   data() {
@@ -39,6 +40,7 @@ export default {
   components: {
     DataTable,
     Column,
+    Button,
   },
 };
 </script>
@@ -56,6 +58,17 @@ export default {
         :key="col.field"
         :field="col.field"
         :header="col.header"></Column>
+      <Column header="Ações">
+        <template #body="slotProps">
+          <router-link
+            :to="'/certified/' + slotProps.data.code"
+            target="_blank">
+            <Button
+              label="Certificados"
+              severity="info"
+              outlined /> </router-link
+        ></template>
+      </Column>
     </DataTable>
   </div>
 </template>

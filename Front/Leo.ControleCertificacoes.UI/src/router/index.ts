@@ -15,7 +15,7 @@ const router = createRouter({
       component: () => import('../views/EmployeeView.vue')
     },
     {
-      path: '/certified',
+      path: '/certified/:code',
       name: 'certified',
       component: () => import('../views/CertifiedView.vue')
     }
