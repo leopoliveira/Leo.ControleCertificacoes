@@ -12,12 +12,40 @@ const router = createRouter({
     {
       path: '/employee',
       name: 'employee',
-      component: () => import('../views/EmployeeView.vue')
+      component: () => import('../views/EmployeeView.vue'),
+      /*children: [
+        {
+          path: 'create',
+          component: () => import('../views/EmployeeCreateView.vue'),
+        },
+        {
+          path: 'edit',
+          component: () => import('../views/EmployeeEditView.vue'),
+        },
+        {
+          path: 'delete',
+          component: () => import('../views/EmployeeDeleteView.vue'),
+        },
+      ]*/
     },
     {
       path: '/certified/:code',
       name: 'certified',
-      component: () => import('../views/CertifiedView.vue')
+      component: () => import('../views/CertifiedView.vue'),
+      /*children: [
+        {
+          path: 'create',
+          component: () => import('../views/CertifiedCreateView.vue'),
+        },
+        {
+          path: 'edit',
+          component: () => import('../views/CertifiedEditView.vue'),
+        },
+        {
+          path: 'delete',
+          component: () => import('../views/CertifiedDeleteView.vue'),
+        }
+      ]*/
     }
   ]
 })
