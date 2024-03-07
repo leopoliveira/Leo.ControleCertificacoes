@@ -60,9 +60,7 @@ export default {
         :header="col.header"></Column>
       <Column header="Ações">
         <template #body="slotProps">
-          <router-link
-            :to="'/certified/' + slotProps.data.code"
-            target="_blank">
+          <router-link :to="'/certified/' + slotProps.data.code">
             <Button
               label="Certificados"
               severity="info"

@@ -5,5 +5,6 @@ namespace Leo.ControleCertificacoes.Core.Repository.Interfaces
 {
     public interface ICertifiedRepository : IRepositoryBase<Certified>
     {
+        Task<IEnumerable<Certified>> GetByEmployeeCode(int employeeCode);
     }
 }

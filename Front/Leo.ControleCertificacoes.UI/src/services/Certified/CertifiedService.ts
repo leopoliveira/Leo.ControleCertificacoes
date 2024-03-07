@@ -8,14 +8,9 @@ export async function GetByCode(code: string): Promise<CertifiedReadType[]>
 {
   try
   {
-    const response = await axios.get(`/certified/getByCode/${ code }`);
-
-    if (response.status !== 200)
-    {
-      return [] as CertifiedReadType[];
-    }
-
+    const response = await axios.get(`/Employee/${ code }/Certifieds`);
     return response.data as CertifiedReadType[];
+
   } catch (error)
   {
     console.error(error);

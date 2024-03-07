@@ -54,6 +54,18 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return certified.ToCertifiedDto();
         }
 
+        public async Task<IEnumerable<CertifiedDto>> GetByEmployeeCode(int employeeCode)
+        {
+            var certifieds = await _repository.GetByEmployeeCode(employeeCode);
+
+            if (certifieds is null)
+            {
+                return null;
+            }
+
+            return certifieds.Select(x => x.ToCertifiedDto());
+        }
+
         public async Task<int> CountAsyncAsync()
         {
             return await _repository.CountAsyncAsync();

@@ -10,6 +10,8 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 
         Task<CertifiedDto> GetByCodeAsync(int code);
 
+        Task<IEnumerable<CertifiedDto>> GetByEmployeeCode(int employeeCode);
+
         Task<int> CountAsyncAsync();
 
         Task<CertifiedDto> InsertAsync(CertifiedCreateDto dto);

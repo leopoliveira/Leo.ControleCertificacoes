@@ -1,4 +1,5 @@
 ﻿using Leo.ControleCertificacoes.API.Controllers.Base;
+using Leo.ControleCertificacoes.Core.Application.Dtos.Certified;
 using Leo.ControleCertificacoes.Core.Application.Dtos.Employee;
 using Leo.ControleCertificacoes.Core.Services.Interfaces;
 
@@ -9,10 +10,12 @@ namespace Leo.ControleCertificacoes.API.Controllers
     public class EmployeeController : BaseAppController
     {
         private readonly IEmployeeService _service;
+        private readonly ICertifiedService _certifiedService;
 
-        public EmployeeController(IEmployeeService service)
+        public EmployeeController(IEmployeeService service, ICertifiedService certifiedService)
         {
             _service = service;
+            _certifiedService = certifiedService;
         }
 
         [HttpGet]
@@ -58,6 +61,27 @@ namespace Leo.ControleCertificacoes.API.Controllers
             }
 
             return Ok(dto);
+        }
+
+        [HttpGet]
+        [Route("/api/Employee/{code}/Certifieds")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<CertifiedDto>> GetEmployeeCertifieds(int code)
+        {
+            if (code == 0)
+            {
+                return NotFound("The code has to be greater than zero.");
+            }
+
+            var dtoList = await _certifiedService.GetByEmployeeCode(code);
+
+            if (dtoList is null)
+            {
+                return NotFound("Anything was found with the given code.");
+            }
+
+            return Ok(dtoList);
         }
 
         [HttpPost]
