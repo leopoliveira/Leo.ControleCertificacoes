@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,38 +12,38 @@ const router = createRouter({
     {
       path: '/employee',
       name: 'employee',
-      component: () => import('../views/EmployeeView.vue'),
+      component: () => import('@/views/Employee/EmployeeView.vue'),
       /*children: [
         {
           path: 'create',
-          component: () => import('../views/EmployeeCreateView.vue'),
+          component: () => import('@/views/EmployeeCreateView.vue'),
         },
         {
           path: 'edit',
-          component: () => import('../views/EmployeeEditView.vue'),
+          component: () => import('@/views/EmployeeEditView.vue'),
         },
         {
           path: 'delete',
-          component: () => import('../views/EmployeeDeleteView.vue'),
+          component: () => import('@/views/EmployeeDeleteView.vue'),
         },
       ]*/
     },
     {
       path: '/certified/:code',
       name: 'certified',
-      component: () => import('../views/CertifiedView.vue'),
+      component: () => import('@/views/Certified/CertifiedView.vue'),
       /*children: [
         {
           path: 'create',
-          component: () => import('../views/CertifiedCreateView.vue'),
+          component: () => import('@/views/CertifiedCreateView.vue'),
         },
         {
           path: 'edit',
-          component: () => import('../views/CertifiedEditView.vue'),
+          component: () => import('@/views/CertifiedEditView.vue'),
         },
         {
           path: 'delete',
-          component: () => import('../views/CertifiedDeleteView.vue'),
+          component: () => import('@/views/CertifiedDeleteView.vue'),
         }
       ]*/
     }

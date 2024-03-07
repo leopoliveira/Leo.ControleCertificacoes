@@ -1,5 +1,5 @@
 <script lang="ts">
-import EmployeeTable from "../components/Employee/EmployeeTable.vue";
+import EmployeeTable from "@/components/Employee/EmployeeTable.vue";
 
 export default {
   components: {
