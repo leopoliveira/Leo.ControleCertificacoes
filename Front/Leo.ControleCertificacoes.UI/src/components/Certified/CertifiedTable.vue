@@ -87,14 +87,14 @@ export default {
         <template #body="slotProps">
           <div class="flex gap-2">
             <router-link
-              :to="'/certified/edit/' + slotProps.data.code">
+              :to="'/certified/' + slotProps.data.code + '/edit'">
               <Button
                 label="Editar"
                 severity="info"
                 outlined />
             </router-link>
             <router-link
-              :to="'/certified/delete/' + slotProps.data.code">
+              :to="'/certified/' + slotProps.data.code + '/delete'">
               <Button
                 label="Excluir"
                 severity="danger"
