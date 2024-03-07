@@ -32,20 +32,21 @@ const router = createRouter({
       path: '/certified/:code',
       name: 'certified',
       component: () => import('@/views/Certified/CertifiedView.vue'),
-      /*children: [
-        {
+      children: [
+        /*{
           path: 'create',
           component: () => import('@/views/CertifiedCreateView.vue'),
-        },
+        },*/
         {
           path: 'edit',
-          component: () => import('@/views/CertifiedEditView.vue'),
+          name: 'certified-edit',
+          component: () => import('@/views/Certified/CertifiedEditView.vue'),
         },
         {
           path: 'delete',
-          component: () => import('@/views/CertifiedDeleteView.vue'),
+          component: () => import('@/views/Certified/CertifiedDeleteView.vue'),
         }
-      ]*/
+      ]
     }
   ]
 })
