@@ -1,6 +1,8 @@
 <script lang="ts">
 import type { CertifiedReadType } from "@/types/Certified/CertifiedReadType";
 
+import CertifiedEdit from "./CertifiedEdit.vue";
+
 import {
   GetByCode,
   Delete,
@@ -29,6 +31,7 @@ export default {
     return {
       columns: [] as any[],
       certifieds: [] as CertifiedReadType[],
+      visible: false,
     };
   },
   created() {
@@ -56,6 +59,7 @@ export default {
     Button,
     ConfirmDialog,
     Toast,
+    CertifiedEdit,
   },
   methods: {
     formatDate(dateString: string, formatString: string) {
@@ -105,6 +109,9 @@ export default {
 <template>
   <Toast />
   <ConfirmDialog></ConfirmDialog>
+  <CertifiedEdit
+    :show="visible"
+    @closed="() => (visible = false)" />
   <div class="">
     <DataTable
       :value="certifieds"
@@ -133,7 +140,8 @@ export default {
             <Button
               label="Editar"
               severity="info"
-              outlined />
+              outlined
+              @click="() => (visible = true)" />
             <Button
               label="Excluir"
               severity="danger"
