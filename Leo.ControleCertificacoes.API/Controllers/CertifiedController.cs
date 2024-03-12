@@ -95,7 +95,7 @@ namespace Leo.ControleCertificacoes.API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("id")]
+        [HttpDelete("{id:Guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<CertifiedDto>> Delete(Guid id)
