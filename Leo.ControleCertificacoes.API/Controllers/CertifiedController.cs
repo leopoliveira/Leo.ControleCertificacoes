@@ -98,14 +98,9 @@ namespace Leo.ControleCertificacoes.API.Controllers
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<CertifiedDto>> Delete(CertifiedDto dto)
+        public async Task<ActionResult<CertifiedDto>> Delete(Guid id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(dto);
-            }
-
-            var result = await _service.DeleteAsync(dto);
+            var result = await _service.DeleteAsync(id);
 
             if (result == 0)
             {

@@ -104,16 +104,16 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             return await GetByIdAsync(certified.Id);
         }
 
-        public async Task<int> DeleteAsync(CertifiedDto dto)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            Certified certified = await _repository.GetByIdAsync(dto.Id);
+            Certified certified = await _repository.GetByIdAsync(id);
 
             if (certified is null)
             {
                 return 0;
             }
 
-            await _employeeService.UpdateNumberOfCertifiedsAsync(dto.EmployeeId, EnumDataBaseOperation.DELETE);
+            await _employeeService.UpdateNumberOfCertifiedsAsync(certified.EmployeeId, EnumDataBaseOperation.DELETE);
 
             return await _repository.DeleteAsync(certified);
         }

@@ -106,9 +106,9 @@ namespace Leo.ControleCertificacoes.Core.Services.Implementation
             _ = await _repository.UpdateAsync(employee);
         }
 
-        public async Task<int> DeleteAsync(EmployeeDto dto)
+        public async Task<int> DeleteAsync(Guid id)
         {
-            Employee employee = await _repository.GetByIdAsync(dto.Id);
+            Employee employee = await _repository.GetByIdAsync(id);
 
             if (employee is null)
             {

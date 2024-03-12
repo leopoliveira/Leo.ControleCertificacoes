@@ -19,6 +19,6 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 
         Task UpdateNumberOfCertifiedsAsync(Guid employeeId, EnumDataBaseOperation operation);
 
-        Task<int> DeleteAsync(EmployeeDto dto);
+        Task<int> DeleteAsync(Guid id);
     }
 }

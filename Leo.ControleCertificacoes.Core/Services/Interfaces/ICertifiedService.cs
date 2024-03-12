@@ -18,6 +18,6 @@ namespace Leo.ControleCertificacoes.Core.Services.Interfaces
 
         Task<CertifiedDto> UpdateAsync(CertifiedPatchDto dto);
 
-        Task<int> DeleteAsync(CertifiedDto dto);
+        Task<int> DeleteAsync(Guid id);
     }
 }
