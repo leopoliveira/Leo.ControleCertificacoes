@@ -15,3 +15,14 @@ export async function GetByCode(code: string): Promise<CertifiedReadType[]>
     return [] as CertifiedReadType[];
   }
 }
+
+export async function Delete(id: string)
+{
+  try
+  {
+    await API().delete(`/Certified/delete/${ id }`);
+  } catch (error)
+  {
+    console.error(error);
+  }
+}

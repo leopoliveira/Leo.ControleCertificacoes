@@ -37,15 +37,6 @@ const router = createRouter({
           path: 'create',
           component: () => import('@/views/CertifiedCreateView.vue'),
         },*/
-        {
-          path: 'edit',
-          name: 'certified-edit',
-          component: () => import('@/views/Certified/CertifiedEditView.vue'),
-        },
-        {
-          path: 'delete',
-          component: () => import('@/views/Certified/CertifiedDeleteView.vue'),
-        }
       ]
     }
   ]
